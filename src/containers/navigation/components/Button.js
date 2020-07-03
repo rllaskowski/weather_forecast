@@ -3,7 +3,7 @@ import styled  from "styled-components";
 import { theme } from "styled-tools";
 
 const ButtonWrapper = styled.button`
-    border-radius: 30px;
+    border-radius: 5px;
     font-weight: 600;
     border: 1px solid transparent;
     background-color: ${theme('colors.primary')};
@@ -22,7 +22,7 @@ const ButtonWrapper = styled.button`
     &:focus {
         outline: none;
     }
-    
+    margin: auto 10px;
     padding: 10px 20px;
 `;
 

@@ -28,8 +28,18 @@ import { cityList } from "../../constant";
 
 const NavigationWrapper = styled.div`
     background-color: #24292E;
-    height: 80px;
+    padding: 10px;
+    min-width: 1000px;
+
 `;
+
+const LabelWrapper = styled.span`
+    padding: 20px;
+    color: white;
+    label { 
+        margin-left: 10px;
+    }
+`
 
 const Navigation = () => {
     const selectedCity = useSelector(cityValueSelector);
@@ -71,10 +81,7 @@ const Navigation = () => {
                 value={selectedCity}
                 onSelect={onCityChange}
             />
-            <Switch
-                onToggle={onForecastTypeToggle}
-                isOn={isLongForecast}
-            />
+
             <Button
                 text={"Search by city"}
                 onClick={onCitySearch}
@@ -84,10 +91,21 @@ const Navigation = () => {
                 text={"Search by localization"}
                 onClick={onGeoSearch}
             />
-            <Switch
-                onToggle={onThemeToggle}
-                isOn={isDarkTheme}
-            />
+            <LabelWrapper>
+                Daily Forecast
+                <Switch
+                    onToggle={onForecastTypeToggle}
+                    isOn={isLongForecast}
+                />
+            </LabelWrapper>
+            <LabelWrapper>
+                Dark theme
+                <Switch
+                    onToggle={onThemeToggle}
+                    isOn={isDarkTheme}
+                />
+            </LabelWrapper>
+
         </NavigationWrapper>
     );
 }

@@ -4,11 +4,11 @@ import DayForecastCard from "./DayForecastCard";
 import HourForecastCard from "./HourForecastCard";
 
 const ForecastListWrapper = styled.div`
-    width: auto;
-    max-width: 900px;
+    width: 50%;
     min-width: 400px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
 `;
 

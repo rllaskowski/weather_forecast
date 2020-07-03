@@ -20,6 +20,7 @@ const LabelWrapper = styled.label`
         -ms-transform: translateX(26px);
         transform: translateX(26px);
     }
+    top: -5px;
 `;
 
 const InputWrapper = styled.input`
@@ -49,7 +50,7 @@ const SpanWrapper = styled.span`
         -webkit-transition: .4s;
         transition: .4s;
     }
-    border-radius: 34px;
+    border-radius: 20px;
     &:before {
         border-radius: 50%;
     }

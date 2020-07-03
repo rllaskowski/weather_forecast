@@ -1,5 +1,5 @@
 import { fromJS } from "immutable";
-import { CACHE_DATA } from "./actions";
+import { CACHE_DATA } from "./const";
 
 export const CACHE_REDUCER_NAME = "Cache";
 

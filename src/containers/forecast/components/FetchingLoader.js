@@ -3,6 +3,10 @@ import styled from "styled-components";
 import Loader from "react-loader-spinner";
 
 const LoaderWrapper = styled.div`
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `;
 
 const FetchingLoader = () => {
@@ -13,8 +17,6 @@ const FetchingLoader = () => {
                 color="#00BFFF"
                 height={100}
                 width={100}
-                timeout={3000}
-
             />
 
         </LoaderWrapper>

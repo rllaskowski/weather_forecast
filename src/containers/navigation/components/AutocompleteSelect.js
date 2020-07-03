@@ -7,6 +7,7 @@ const InputWrapper = styled.input`
     padding: 10px 20px;
     outline: none;
     border: transparent;
+    background-color: #F6F8FA;
 `;
 
 const AutocompleteSelect = ({onSelect, itemList}) => {
@@ -29,10 +30,10 @@ const AutocompleteSelect = ({onSelect, itemList}) => {
             }
             value={value}
             onSelect={(val) => {
-                setValue(value);
+                setValue(val);
                 onSelect(val)
             }}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={e => setValue(e.target.value)}
         />
 
     );

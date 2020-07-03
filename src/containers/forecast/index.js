@@ -14,6 +14,7 @@ const ForecastWrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+ 
 `;
 
 const Forecast = props => {

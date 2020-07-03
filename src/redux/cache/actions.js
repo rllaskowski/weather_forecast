@@ -1,4 +1,4 @@
-export const CACHE_DATA = "cache/CACHE_DATA";
+import { CACHE_DATA } from "./const";
 
 export const cacheData = (url, data) => {
     return {
