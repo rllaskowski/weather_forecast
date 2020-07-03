@@ -1,0 +1,42 @@
+[
+  {
+    "id": 756135,
+    "name": "Warsaw",
+    "state": "",
+    "country": "PL",
+    "coord": {
+      "lon": 21.01178,
+      "lat": 52.229771
+    }
+  },
+  {
+    "id": 3094802,
+    "name": "Kraków",
+    "state": "",
+    "country": "PL",
+    "coord": {
+      "lon": 19.91667,
+      "lat": 50.083328
+    }
+  },
+  {
+    "id": 5128581,
+    "name": "New York City",
+    "state": "NY",
+    "country": "US",
+    "coord": {
+      "lon": -74.005966,
+      "lat": 40.714272
+    }
+  },
+  {
+    "id": 6455259,
+    "name": "Paris",
+    "state": "",
+    "country": "FR",
+    "coord": {
+      "lon": 2.35236,
+      "lat": 48.856461
+    }
+  }
+]

@@ -19,4 +19,17 @@ export const GlobalStyle = createGlobalStyle`
     body {
          margin: ${theme('dims.bigSpacing')};
     }
+    
+    .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 `;

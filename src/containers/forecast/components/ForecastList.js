@@ -1,22 +1,38 @@
 import React from "react";
 import styled from "styled-components";
-import ForecastCard from "./ForecastCard";
+import DayForecastCard from "./DayForecastCard";
+import HourForecastCard from "./HourForecastCard";
 
-const ForecastListWrapper = styled.ul`
+const ForecastListWrapper = styled.div`
+    width: auto;
+    max-width: 900px;
+    min-width: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 `;
 
-const renderForecastList = ({forecastList}) => {
-    return forecastList.map((forecast, index) => (
-        <li key={index}>
-            <ForecastCard forecast={forecast}/>
-        </li>
-    ))
+const renderForecastList = (forecastList, isDaily, gifDict) => {
+    return forecastList.map((forecast, index) =>
+        <div key={index}>
+            {isDaily ?
+                <DayForecastCard
+                    forecast={forecast}
+                    gifDict={gifDict}
+                /> :
+                <HourForecastCard
+                    forecast={forecast}
+                    gifDict={gifDict}
+                />
+            }
+        </div>
+    )
 }
 
-const ForecastList = ({forecastList}) => {
+const ForecastList = ({forecastList, isDaily, gifDict}) => {
     return (
         <ForecastListWrapper>
-            {renderForecastList(forecastList)}
+            {renderForecastList(forecastList, isDaily, gifDict)}
         </ForecastListWrapper>
     )
 }

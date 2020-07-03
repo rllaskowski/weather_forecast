@@ -14,6 +14,8 @@ export const isLoadingSelector = createSelector(
     forecastState => forecastState.get("isLoading")
 );
 
-
-
+export const gifIdxSelector = createSelector(
+    getForecastReducerState,
+    forecastState => forecastState.get("gifIdx")
+)
 

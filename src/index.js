@@ -9,9 +9,9 @@ import {
     compose,
     applyMiddleware
 } from "redux"
-import {combineEpics, createEpicMiddleware} from "redux-observable";
+import { createEpicMiddleware } from "redux-observable";
 import createReducer from "./reducer";
-import { fetchEpic } from "./cache/epics";
+import { rootEpic } from "./epics";
 
 const DEBUG = true;
 
@@ -20,8 +20,6 @@ let store, composeEnhancers;
 const reducer = createReducer();
 
 const epicMiddleware = createEpicMiddleware();
-
-const rootEpic = combineEpics(fetchEpic);
 
 const middleware = applyMiddleware(epicMiddleware);
 

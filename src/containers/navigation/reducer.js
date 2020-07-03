@@ -3,14 +3,14 @@ import {
     Theme,
     TOGGLE_THEME,
     ForecastType,
-    SELECT_CITY
+    SELECT_CITY, TOGGLE_FORECAST_TYPE
 } from "./const";
 import { fromJS } from "immutable";
 
 export const NAVIGATION_REDUCER_NAME = "Navigation";
 
 const initialState = fromJS({
-    selectedCity: null,
+    selectedCity: undefined,
     forecastType: ForecastType.SHORT,
     theme: Theme.LIGHT,
 });
@@ -21,10 +21,13 @@ export const navigationReducer = (state = initialState, action) => {
             return state.updateIn(['theme'], theme => (
                 theme === Theme.LIGHT? Theme.DARK : Theme.LIGHT
             ));
+        case TOGGLE_FORECAST_TYPE:
+            return state.updateIn(['forecastType'], theme => (
+                theme === ForecastType.LONG?
+                    ForecastType.SHORT : ForecastType.LONG
+            ));
         case SELECT_CITY:
             return state.updateIn(['selectedCity'], () => action.city);
-        case SEARCH:
-            return state.updateIn(['searchType'], () => action.searchType)
         default:
             return state
     }

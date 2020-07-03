@@ -3,9 +3,7 @@ import AutocompleteSelect from "./components/AutocompleteSelect";
 import Button from "./components/Button";
 import Switch from "./components/Switch";
 import styled from "styled-components";
-import { connect } from "react-redux";
 import {
-    searchByCity,
     selectCity,
     toggleForecastType,
     toggleTheme
@@ -15,70 +13,83 @@ import {
     forecastTypeSelector,
     themeSelector
 } from "./selectors";
-import { searchByGeo } from "./actions";
+
 import {ForecastType, Theme} from "./const";
+import {
+    getCityForecast,
+    getGeoForecast
+} from "../forecast/actions";
+import {
+    useDispatch,
+    useSelector
+} from "react-redux";
+
+import { cityList } from "../../constant";
 
 const NavigationWrapper = styled.div`
-    background-color: red;
+    background-color: #24292E;
+    height: 80px;
 `;
 
-const Navigation = props => {
-    const {
-        cityList,
-        selectedCity,
-        theme,
-        forecastType,
-        onCityChange,
-        onCitySearch,
-        onGeoSearch,
-        onThemeToggle,
-        onForecastTypeToggle
-    } = props;
+const Navigation = () => {
+    const selectedCity = useSelector(cityValueSelector);
+    const theme = useSelector(themeSelector);
+    const forecastType = useSelector(forecastTypeSelector);
+
+    const dispatch = useDispatch();
+
+    const onCityChange = city => {
+        dispatch(selectCity(city));
+    };
+
+    const onForecastTypeToggle = () => {
+        dispatch(toggleForecastType());
+    }
+
+    const onCitySearch = () => {
+        if (selectedCity) {
+            dispatch(getCityForecast());
+        }
+    }
+
+    const onGeoSearch = () => {
+        dispatch(getGeoForecast());
+    }
+
+    const onThemeToggle = () => {
+        dispatch(toggleTheme());
+    }
 
     const isDarkTheme = (theme === Theme.DARK);
     const isLongForecast = (forecastType === ForecastType.LONG);
+    const citySearchDisabled = !selectedCity;
+
     return (
         <NavigationWrapper>
             <AutocompleteSelect
-                valueList={cityList}
+                itemList={cityList}
                 value={selectedCity}
-                onChange={onCityChange}
+                onSelect={onCityChange}
             />
-            <Switch onToggle={onForecastTypeToggle} isOn={isLongForecast}/>
-            <Button text={"Szukaj po mieście"} onClick={onCitySearch}/>
-            <Button text={"Szukaj po lokalizacji"} onClick={onGeoSearch}/>
-            <Switch onToggle={onThemeToggle} isOn={isDarkTheme}/>
+            <Switch
+                onToggle={onForecastTypeToggle}
+                isOn={isLongForecast}
+            />
+            <Button
+                text={"Search by city"}
+                onClick={onCitySearch}
+                disabled={citySearchDisabled}
+            />
+            <Button
+                text={"Search by localization"}
+                onClick={onGeoSearch}
+            />
+            <Switch
+                onToggle={onThemeToggle}
+                isOn={isDarkTheme}
+            />
         </NavigationWrapper>
     );
-
 }
 
-const mapStateToProps = state => {
-    return {
-        selectedCity: cityValueSelector(state),
-        forecastType: forecastTypeSelector(state),
-        theme: themeSelector(state)
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onCityChange: city => {
-            dispatch(selectCity(city));
-        },
-        onCitySearch: () => {
-            dispatch(searchByCity());
-        },
-        onGeoSearch: () => {
-            dispatch(searchByGeo());
-        },
-        onThemeToggle: () => {
-            dispatch(toggleTheme())
-        },
-        onForecastTypeToggle: () => {
-            dispatch(toggleForecastType())
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default Navigation;
