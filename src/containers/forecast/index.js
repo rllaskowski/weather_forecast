@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import {
-    forecastSelector,
-    isLoadingSelector
-} from "./selectors";
+import { forecastSelector, isLoadingSelector } from "./selectors";
 import ForecastList from "./components/ForecastList";
 import FetchingLoader from "./components/FetchingLoader";
 import { useSelector } from "react-redux";
@@ -14,15 +10,11 @@ const ForecastWrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
- 
 `;
 
-const Forecast = props => {
-    const {
-        isLoading,
-        forecast
-    } = props;
-
+const Forecast = () => {
+    const isLoading = useSelector(isLoadingSelector);
+    const forecast = useSelector(forecastSelector);
     const gifDict = useSelector(gifSelector);
 
     let forecastList = undefined;
@@ -44,15 +36,7 @@ const Forecast = props => {
 
             }
         </ForecastWrapper>
-
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        forecast: forecastSelector(state),
-        isLoading: isLoadingSelector(state)
-    }
-}
-
-export default connect(mapStateToProps)(Forecast);
+export default Forecast;
