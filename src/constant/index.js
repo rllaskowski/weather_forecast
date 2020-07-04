@@ -1,5 +1,3 @@
-import { fromJS } from "immutable";
-
 const cityListJS = require("./city-list.json");
 
 const cityList = cityListJS.map(city => ({

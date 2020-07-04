@@ -34,6 +34,7 @@ const AutocompleteSelect = ({onSelect, itemList}) => {
                 onSelect(val)
             }}
             onChange={e => setValue(e.target.value)}
+            shouldItemRender={(item, value) => item.value.toLowerCase().startsWith(value)}
         />
 
     );

@@ -1,5 +1,4 @@
 import {
-    SEARCH,
     Theme,
     TOGGLE_THEME,
     ForecastType,
